@@ -248,29 +248,50 @@ bool Date::operator != (const Date& d)
 }
 
 // 日期-日期 返回天数
+// size_t Date::operator-(const Date& d)
+// {
+// 	size_t countDay1 = 0;
+// 	size_t countDay2 = 0;
+// 	for (int i = 1; i < _year; i++)
+// 	{
+// 		countDay1 += GetYearDay(i);
+// 	}
+// 	for (int i = 1; i < _month; i++)
+// 	{
+// 		countDay1 += GetMonthDay(_year, i);
+// 	}
+// 	countDay1 += _day;
+// 	for (int i = 1; i < d._year; i++)
+// 	{
+// 		countDay2 += GetYearDay(i);
+// 	}
+// 	for (int i = 1; i < d._month; i++)
+// 	{
+// 		countDay2 += GetMonthDay(d._year, i);
+// 	}
+// 	countDay2 += d._day;
+// 	return countDay1 - countDay2;
+// }
+// 日期-日期 返回天数
 size_t Date::operator-(const Date& d)
 {
-	size_t countDay1 = 0;
-	size_t countDay2 = 0;
-	for (int i = 1; i < _year; i++)
+	Date min = *this;
+	Date max = d;
+	int flag = 1;
+	if (min > max)
 	{
-		countDay1 += GetYearDay(i);
+		min = d;
+		max = *this;
+		flag = -1;
 	}
-	for (int i = 1; i < _month; i++)
+	int day = 0;
+	while (min != max)
 	{
-		countDay1 += GetMonthDay(_year, i);
+		min++;
+		day++;
 	}
-	countDay1 += _day;
-	for (int i = 1; i < d._year; i++)
-	{
-		countDay2 += GetYearDay(i);
-	}
-	for (int i = 1; i < d._month; i++)
-	{
-		countDay2 += GetMonthDay(d._year, i);
-	}
-	countDay2 += d._day;
-	return countDay1 - countDay2;
+	
+	return day * flag;
 }
 
 std::ostream& operator<<(std::ostream& os,const Date& d)
