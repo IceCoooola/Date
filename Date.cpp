@@ -273,7 +273,7 @@ bool Date::operator != (const Date& d)
 // 	return countDay1 - countDay2;
 // }
 // 日期-日期 返回天数
-size_t Date::operator-(const Date& d)
+int Date::operator-(const Date& d)
 {
 	Date min = *this;
 	Date max = d;
