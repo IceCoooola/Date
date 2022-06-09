@@ -78,7 +78,7 @@ public:
 	bool operator != (const Date& d);
 
 	// 日期-日期 返回天数
-	size_t operator-(const Date& d);
+	int operator-(const Date& d);
 
 	friend std::ostream& operator<<(std::ostream& os, const Date& d);
 
