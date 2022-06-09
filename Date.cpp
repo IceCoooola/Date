@@ -294,8 +294,16 @@ int Date::operator-(const Date& d)
 	return day * flag;
 }
 
-std::ostream& operator<<(std::ostream& os,const Date& d)
+std::ostream& operator<<(std::ostream& os, const Date& d)
 {
-	os << d._year << "-" << d._month << "-" << d._day;
+    os << d._year << "-" ;
+    if(d._month < 10)
+	os << "0" << d._month << "-";
+    else
+        os<<d._month<<"-";
+    if(d._day < 10)
+        os << "0" <<d._day<<std::endl;
+    else
+        os<<d._day<<std::endl;
 	return os;
 }
